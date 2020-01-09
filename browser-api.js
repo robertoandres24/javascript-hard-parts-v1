@@ -87,12 +87,23 @@ console.log('End of Challenge 3');
 //             //
 /////////////////
 
-// /* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
+/* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
 console.log('Start of Challenge 4');
 // ...your code below
 
+function forEach(arr, cb) {
+  for(let i= 0; i < arr.length; i++) {
+    cb(arr[i], i)
+  }
+}
+const delays = [2000, 5000, 0, 3500]
+function delayLog(delayTime, i) {
+  setTimeout(function() {
+   console.log(`printing element ${i}`); 
+  }, delayTime)
+}
 
-
+forEach(delays, delayLog)
 
 
 console.log('End of Challenge 4');
@@ -106,16 +117,34 @@ console.log('End of Challenge 4');
 //             //
 /////////////////
 
-// /* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
+/* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
 console.log('Start of Challenge 5');
 // ...your code below
+function changeColor() {
+  if(document.body.style.background === 'rgb(221, 238, 255)') {
+    console.log('yes')
+    document.body.style.background = 'rgb(255, 238, 221)'
+  }
+  else {
+    console.log('nop')
+    document.body.style.background = 'rgb(221, 238, 255)'
+  }
+  
+}
 
+let activateBtn = document.querySelector('#activate')
+let colorBtn = document.querySelector('#color')
 
+activateBtn.addEventListener('click', function() {
+  console.log('clicked #1')
+})
+
+colorBtn.addEventListener('click', changeColor)
 
 
 // ...your code above
-document.body.style.background = '#def';
-console.log('End of Challenge 3');
+//document.body.style.background = '#def';
+console.log('End of Challenge 5');
 // */// (do not alter this line)
 
 
@@ -125,15 +154,26 @@ console.log('End of Challenge 3');
 // CHALLENGE 6 //
 //             //
 /////////////////
-
-// /* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
+/* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
 console.log('Start of Challenge 6');
 var dataReceived;
 
 function ajaxSimulate(id, callback) {
   var database = ['Aaron', 'Barbara', 'Chris'];
-
+  setTimeout(function() {
+    callback(database[id])
+  }, 2000)
 }
+function storeData(data) {
+  dataReceived = data
+  console.log(dataReceived)
+}
+
+ajaxSimulate(1, storeData)
+
+
+
+
 // ...your code below
 
 
@@ -149,12 +189,14 @@ console.log('End of Challenge 6');
 //             //
 /////////////////
 
-// /* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
+/* <<<=== Remove the first two slashes (//) to comment out this challenge when finished
 console.log('Start of Challenge 7');
 // ...your code below
+let target = document.querySelector('#ch2')
 
-
-
+fetch('https://rest.bandsintown.com/artists/lennon?app_id=jshp')
+  .then(response => response.json())
+  .then(json => target.style.backgroundImage = `url(${json.thumb_url})` )
 
 
 console.log('End of Challenge 7');
